@@ -1,0 +1,63 @@
+{
+    "name": "file-picker",
+    "displayName": "File Picker",
+    "description": "Open files by path relative to the workspace folder or the current opened file",
+    "author": {
+        "name": "Maximilian Wehrstedt",
+        "email": "wehrstedt-coding@outlook.de"
+    },
+    "publisher": "wehrstedt",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wehrstedt/vscode-file-picker"
+    },
+    "license": "MIT",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.file-picker.openFileRelativeToWorkspace",
+        "onCommand:extension.file-picker.openFileRelativeToOpenedFile",
+        "onCommand:extension.file-picker.openFileByPath"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.file-picker.openFileRelativeToWorkspace",
+                "title": "Open file relative to the workspace root",
+                "category": "File Picker"
+            },
+            {
+                "command": "extension.file-picker.openFileRelativeToOpenedFile",
+                "title": "Open file relative to the current file",
+                "category": "File Picker"
+            },
+            {
+                "command": "extension.file-picker.openFileByPath",
+                "title": "Open file by path",
+                "category": "File Picker"
+            }
+        ]
+    },
+    "scripts": {
+        "build": "npx vsce package",
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "yarn run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^8.10.25",
+        "tslint": "^5.8.0",
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25"
+    },
+    "dependencies": {}
+}
